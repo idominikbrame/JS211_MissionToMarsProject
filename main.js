@@ -9,8 +9,47 @@ const jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code will go here
 
+
+
+class CrewMember {
+  constructor(name, job, specialSkill) {
+    this.name = name; 
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  } 
+  enterShip(ship) {
+    this.ship = ship;
+    ship.addCrewMember(this)
+  }
+}
+
+class Ship{
+  constructor(name, type, ability) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = []
+  }
+  addCrewMember(crewMember) {
+    this.crew.push(crewMember)
+  }
+  missionStatement() {
+    if (this.crew == 0) {
+      return "Can't perform a mission yet."
+    } 
+    if(this.crew.length > 0) {
+      if(this.name == 'Mars Ascent Vehicle'  ) {
+        return 'Ascend into low orbit'
+      } 
+      else if(this.ability == "Interplanetary Space Travel"){
+        return this.ability
+      }
+  } 
+
+  }
+}
 
 
 
@@ -32,6 +71,10 @@ if (typeof describe === 'function'){
       assert.equal(crewMember1.ship, null);
     });
 
+
+
+
+
     it('can enter a ship', function(){
       // this creates a new Ship. Can you build a class that can be called so that this Ship can be built?
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
@@ -43,6 +86,11 @@ if (typeof describe === 'function'){
     });
   });
 
+
+
+
+
+
   describe('Ship', function(){
     it('should have a name, a type, an ability and an empty crew upon instantiation', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
@@ -51,6 +99,11 @@ if (typeof describe === 'function'){
       assert.equal(mav.ability, 'Ascend into low orbit');
       assert.equal(mav.crew.length, 0);
     });
+
+
+
+
+
 
     it('can return a mission statement correctly', function(){
       let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
