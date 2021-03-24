@@ -40,14 +40,8 @@ class Ship{
       return "Can't perform a mission yet."
     } 
     if(this.crew.length > 0) {
-      if(this.name == 'Mars Ascent Vehicle'  ) {
-        return 'Ascend into low orbit'
-      } 
-      else if(this.ability == "Interplanetary Space Travel"){
-        return this.ability
-      }
-  } 
-
+      return this.ability
+    }
   }
 }
 
